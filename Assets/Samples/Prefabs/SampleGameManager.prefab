@@ -1,0 +1,96 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &2748001461911701003
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3216509306580634128}
+  - component: {fileID: 1985594090932113962}
+  - component: {fileID: 881493263719731310}
+  - component: {fileID: 2158409024137882308}
+  - component: {fileID: 783055590599680188}
+  m_Layer: 0
+  m_Name: SampleGameManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3216509306580634128
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2748001461911701003}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1985594090932113962
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2748001461911701003}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a3665203c84ac84e878a9d5d6789c82, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::StateEngine.Managers.Game.GameManager
+  _state: {fileID: 881493263719731310}
+  _session: {fileID: 2158409024137882308}
+  _data: {fileID: 783055590599680188}
+--- !u!114 &881493263719731310
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2748001461911701003}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 57ccb3cdf4c52ca4c8a136a72661d2f0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::StateEngine.Managers.Game.GameStateManager
+  dataManager: {fileID: 783055590599680188}
+  xmlGraph: {fileID: 4900000, guid: 5d8ec9be5073edd489f3e99e089f19b7, type: 3}
+--- !u!114 &2158409024137882308
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2748001461911701003}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 944b926db96be9d4faa79f82b9a1dd4a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::StateEngine.Managers.Game.GameSessionManager
+  <XmlGameData>k__BackingField: {fileID: 4900000, guid: e427082a59a4e854090b9bc0e6a7bf3f, type: 3}
+--- !u!114 &783055590599680188
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2748001461911701003}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1a333020b339c57479c253c9f43d56c6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::StateEngine.Samples.SampleGameDataManager
+  gameSessionManager: {fileID: 2158409024137882308}
+  xmlGameLevels: {fileID: 4900000, guid: 71618d3871c52984da3c1e3d722e76e1, type: 3}
+  runtimeStateTemplate: {fileID: 0}
+  startupScenario: {fileID: 0}
+  scenarioLoadMode: 0
