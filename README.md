@@ -13,6 +13,9 @@ Attach on the same GameObject:
 - `GlobalSessionManager`
 - `GlobalDataManager`
 
+TODO:
++add XML file(s)... (states, (values))
+
 ### 2. Create the `GameManager` prefab
 
 Attach on the same GameObject:
@@ -20,6 +23,9 @@ Attach on the same GameObject:
 - `GameStateManager`
 - `GameSessionManager`
 - `GameDataManager`
+
+TODO:
++add XML files... (states, values, levels)
 
 ### 3. Create the `ManagerHost` object or prefab
 

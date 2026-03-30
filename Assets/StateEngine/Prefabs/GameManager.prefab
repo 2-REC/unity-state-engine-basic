@@ -62,7 +62,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 57ccb3cdf4c52ca4c8a136a72661d2f0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::StateEngine.Managers.Game.GameStateManager
-  _currentState: Gameplay
+  dataManager: {fileID: 6626289381055456744}
+  xmlGraph: {fileID: 0}
 --- !u!114 &8272450623809534062
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -75,7 +76,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 944b926db96be9d4faa79f82b9a1dd4a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::StateEngine.Managers.Game.GameSessionManager
-  _runActive: 0
+  <XmlGameData>k__BackingField: {fileID: 0}
 --- !u!114 &6626289381055456744
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -88,4 +89,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5c4755ddda89e5f40a5e519e6a3ac75a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::StateEngine.Managers.Game.GameDataManager
-  _currentLevelIndex: 0
+  gameSessionManager: {fileID: 8272450623809534062}
+  xmlGameLevels: {fileID: 0}
+  runtimeStateTemplate: {fileID: 0}
+  startupScenario: {fileID: 0}
+  scenarioLoadMode: 0

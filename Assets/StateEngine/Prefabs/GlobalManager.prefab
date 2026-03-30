@@ -62,7 +62,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 531fefcb9d397a840925afe0fa951a04, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::StateEngine.Managers.Global.GlobalStateManager
-  _currentState: Boot
+  dataManager: {fileID: 4583409934566526516}
+  xmlGraph: {fileID: 0}
 --- !u!114 &1883574337013144940
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -75,7 +76,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5d4a2b6365047a142b8f627491c9324e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::StateEngine.Managers.Global.GlobalSessionManager
-  _sessionOpen: 0
+  <XmlGlobalData>k__BackingField: {fileID: 0}
 --- !u!114 &4583409934566526516
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -88,4 +89,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8e15f5dfe85e739489d2b38fa7fda327, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::StateEngine.Managers.Global.GlobalDataManager
-  _profileId: 0
+  globalSessionManager: {fileID: 1883574337013144940}
+  runtimeStateTemplate: {fileID: 0}
+  startupScenario: {fileID: 0}
+  scenarioLoadMode: 0
