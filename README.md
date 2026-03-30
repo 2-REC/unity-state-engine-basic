@@ -36,10 +36,15 @@ Choose one:
 - place `ManagerHost` in bootstrap scene, or
 - place `ManagerHostBootstrap` in scenes started from the editor
 
+> **NOTE:** Change the script execution order of `ManagerHostBootstrap` to make sure it executes before other scripts.
+
 ### 5. Usage
 
 - `GlobalManager.Instance`
 - `GameManager.Instance`
+- `GlobalManager.Instance.State.LeaveToScene("MainMenu")`
+- `GameManager.Instance.State.LeaveToScene("WorldMap")`
+- `GameManager.Instance.State.QuitApplicationFromState()`
 - `ManagerHost.Instance.DestroyGameManager()`
 - `ManagerHost.Instance.DestroyGlobalManager()`
 - `ManagerHost.Instance.DestroyAllManagers()`
