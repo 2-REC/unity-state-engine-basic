@@ -1,5 +1,5 @@
+using StateEngine.Managers.Contracts;
 using StateEngine.Managers.Core;
-//using StateEngine.Managers.Shared;
 using UnityEngine;
 
 namespace StateEngine.Managers.Game {
@@ -49,6 +49,18 @@ namespace StateEngine.Managers.Game {
             _data ??= GetComponent<GameDataManager>();
 
             ValidateReferences();
+        }
+
+        protected override void DestroyViaHost() {
+            ManagerHost.Instance.DestroyGameManager();
+        }
+
+        protected override void OnBeforeTransition(TransitionIntent intent) {
+            Debug.Log($"{nameof(GameManager)} received transition intent: {intent.Type}.", this);
+        }
+
+        protected override void OnBeforeTeardown() {
+            Debug.Log($"{nameof(GameManager)} teardown requested.", this);
         }
 
         private void ValidateReferences() {

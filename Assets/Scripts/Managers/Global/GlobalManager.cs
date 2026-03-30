@@ -1,5 +1,5 @@
+using StateEngine.Managers.Contracts;
 using StateEngine.Managers.Core;
-//using StateEngine.Managers.Shared;
 using UnityEngine;
 
 namespace StateEngine.Managers.Global {
@@ -49,6 +49,18 @@ namespace StateEngine.Managers.Global {
             _data ??= GetComponent<GlobalDataManager>();
 
             ValidateReferences();
+        }
+
+        protected override void DestroyViaHost() {
+            ManagerHost.Instance.DestroyGlobalManager();
+        }
+
+        protected override void OnBeforeTransition(TransitionIntent intent) {
+            Debug.Log($"{nameof(GlobalManager)} received transition intent: {intent.Type}.", this);
+        }
+
+        protected override void OnBeforeTeardown() {
+            Debug.Log($"{nameof(GlobalManager)} teardown requested.", this);
         }
 
         private void ValidateReferences() {

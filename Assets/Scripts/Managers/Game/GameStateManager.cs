@@ -10,5 +10,17 @@ namespace StateEngine.Managers.Game {
         public void SetState(string state) {
             _currentState = state;
         }
+
+        public void LeaveToScene(string sceneName) {
+            RequestSceneTransition(sceneName);
+        }
+
+        public void QuitApplicationFromState() {
+            RequestApplicationQuit();
+        }
+
+        public void DestroyOwnerOnly() {
+            RequestOwnerTeardown();
+        }
     }
 }
