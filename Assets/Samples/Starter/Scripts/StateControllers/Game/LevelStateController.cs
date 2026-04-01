@@ -20,11 +20,9 @@ namespace StateEngine.Samples.Starter {
             GameManager.Instance.Data.LoseLife();
             GameManager.Instance.Data.CommitChanges();
 
-StateIds.dumpStates();
             LoadChildState("FAILURE");
         }
 
-        // TODO: OK?
         public void Quit() {
             LoadChildState("QUIT_GAME");
         }
