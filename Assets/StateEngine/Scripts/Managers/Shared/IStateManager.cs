@@ -236,7 +236,7 @@ namespace StateEngine.Managers.Shared {
             if (!string.IsNullOrEmpty(exitScene)) {
                 /*
                 //TODO: should be done in 'parent' (galobalmanager/boot)
-                //?                instance = null;
+                //instance = null;
                 Destroy(gameObject);
                 SceneManager.LoadScene(exitScene);
                 */

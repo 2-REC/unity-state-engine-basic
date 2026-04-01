@@ -26,7 +26,7 @@ namespace StateEngine.Managers.Game {
         */
 
         protected override void Load() {
-            Load(new GlobalGraphLoader(xmlGraph));
+            Load(new GameGraphLoader(xmlGraph));
         }
 
         // TODO: not really useful...?

@@ -13,7 +13,8 @@ namespace StateEngine.Graphs {
 
         protected override bool CheckAttributes(StateData data) {
             if ((data.scene == null) || "".Equals(data.scene)) {
-                Debug.Log("Invalid state!");
+                // TODO: Exception
+                Debug.LogError("Invalid state!");
                 return false;
             }
             return true;

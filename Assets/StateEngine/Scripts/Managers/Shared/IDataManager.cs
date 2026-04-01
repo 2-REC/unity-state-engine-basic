@@ -6,17 +6,19 @@ namespace StateEngine.Managers.Shared {
 
         // TODO: protected virtual?
         protected virtual void Awake() {
-            LoadData();
+            //LoadData();
+            Load();
         }
 
-        /*
         public void Load() {
+            /*
             if (!loaded) {
                 LoadData();
                 loaded = true;
             }
+            */
+            LoadData();
         }
-        */
 
         public virtual void Leave() {
             CommitChanges();

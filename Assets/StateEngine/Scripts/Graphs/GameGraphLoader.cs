@@ -51,7 +51,7 @@ namespace StateEngine.Graphs {
         protected override bool CheckAttributes(StateData data) {
             if (!((GameStateData)data).isLevel && ((data.scene == null) || "".Equals(data.scene))) {
                 // TODO: Exception
-                Debug.Log("Invalid state!");
+                Debug.LogError("Invalid state!");
                 return false;
             }
             return true;

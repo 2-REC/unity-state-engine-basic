@@ -1,6 +1,7 @@
 using StateEngine.Graphs;
 using StateEngine.Managers.Shared;
 using StateEngine.Runtime;
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -33,6 +34,9 @@ namespace StateEngine.Managers.Game {
 
         private Dictionary<int, LevelNode> levels;
         private Dictionary<int, bool> availableLevels = new Dictionary<int, bool>();
+
+        // public read-only access
+        public RuntimeGameStateAsset RuntimeState => runtimeState;
 
         protected override void LoadData() {
             // TODO: could check that have a session manager
@@ -68,6 +72,14 @@ namespace StateEngine.Managers.Game {
             CommitRuntimeStateToSession();
             gameSessionManager.Save();
         }
+
+        ////////
+        // TODO: OK?
+        public void NewGame(int difficulty) {
+            gameSessionManager.NewGame(difficulty);
+            LoadData();
+        }
+        ////////
 
         public void SaveGame(string filename) {
             if (ShouldSkipPersistence()) {
@@ -435,3 +447,4 @@ namespace StateEngine.Managers.Game {
         }
     }
 }
+
