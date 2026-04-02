@@ -1,0 +1,21 @@
+<ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <ui:Label text="Main Menu" name="menu-label" style="align-self: center;"/>
+    <ui:Button text="Continue" name="continue-button" style="visibility: visible; display: none;"/>
+    <ui:Button text="New Game" name="new-button"/>
+    <ui:Button text="Load Game" name="load-button" style="display: none; visibility: visible;"/>
+    <ui:Button text="Quit" name="quit-button"/>
+    <ui:VisualElement name="difficulty-container" style="flex-grow: 1; width: 100%; height: 100%; position: absolute; background-color: rgb(49, 77, 120); display: none;">
+        <ui:Label text="New Game" name="new-label" style="align-self: center;"/>
+        <ui:Button text="Easy" name="easy-button"/>
+        <ui:Button text="Normal" name="normal-button"/>
+        <ui:Button text="Hard" name="hard-button"/>
+        <ui:Button text="Back" name="back-button"/>
+    </ui:VisualElement>
+    <ui:VisualElement name="load-container" style="flex-grow: 1; width: 100%; height: 100%; position: absolute; background-color: rgb(49, 77, 120); display: none;">
+        <ui:Label text="Load Game" name="load-label" style="align-self: center;"/>
+        <ui:Button text="Slot 1" name="load-button-1"/>
+        <ui:Button text="Slot 2" name="load-button-2"/>
+        <ui:Button text="Slot 3" name="load-button-3"/>
+        <ui:Button text="Back" name="load-back-button"/>
+    </ui:VisualElement>
+</ui:UXML>
