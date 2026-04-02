@@ -10,33 +10,29 @@ namespace StateEngine.Samples.Values {
         [SerializeField] private int healthChange = 5;
         [SerializeField] private int pointsChange = 10;
 
-        /*
+        private ValuesGameDataManager gameDataManager;
+
         public override void HandleMainState() {
+            gameDataManager = (ValuesGameDataManager)GameManager.Instance.Data;
         }
-        */
 
         public void AddHealth() {
-            int health = gameManager.Data.GetField("HEALTH") + healthChange;
-            gameManager.Data.SetField("HEALTH", health);
+            gameDataManager.Health += healthChange;
         }
 
         public void SubHealth() {
-            int health = gameManager.Data.GetField("HEALTH") - healthChange;
-            gameManager.Data.SetField("HEALTH", health);
-
-            if (health <= 0) {
+            gameDataManager.Health -= healthChange;
+            if (gameDataManager.Health <= 0) {
                 EndLevelFailure();
             }
         }
 
         public void AddPoints() {
-            int points = gameManager.Data.GetField("POINTS");
-            gameManager.Data.SetField("POINTS", points + pointsChange);
+            gameDataManager.Points += pointsChange;
         }
 
         public void SubPoints() {
-            int points = gameManager.Data.GetField("POINTS");
-            gameManager.Data.SetField("POINTS", points - pointsChange);
+            gameDataManager.Points -= pointsChange;
         }
 
         public void EndLevelSuccess() {
