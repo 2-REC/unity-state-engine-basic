@@ -2,26 +2,26 @@ using System.Collections.Generic;
 
 namespace StateEngine.Graphs {
     public class StateIds {
-        public static int NONE { get; private set; } = 0;
+        public int NONE { get; private set; } = 0;
 
-        private static List<string> states = new List<string>();
+        private List<string> states = new List<string>();
 
 
-        public static void Reset() {
+        public void Reset() {
             states.Clear();
             NONE = 0;
         }
 
-        public static void Add(string stateId) {
+        public void Add(string stateId) {
             states.Add(stateId);
             ++NONE; //or: NONE = states.Count;
         }
 
-        public static int Index(string stateId) {
+        public int Index(string stateId) {
             return states.IndexOf(stateId);
         }
 
-        public static string Name(int index) {
+        public string Name(int index) {
             return states[index];
         }
     }

@@ -6,7 +6,6 @@ using UnityEngine;
 using UnityEngine.UIElements;
 
 namespace StateEngine.Samples.Shared {
-    //[RequireComponent(typeof(UIDocument))]
     public class LevelHudController : MonoBehaviour {
 
         public enum RuntimeValueSource {
@@ -65,7 +64,7 @@ namespace StateEngine.Samples.Shared {
         }
 
         [Header("References")]
-        [SerializeField] private UIDocument uiDocument;
+        [SerializeField] protected UIDocument uiDocument;
 
         [Header("General")]
         [SerializeField] private string missingValueText = "-";
@@ -77,21 +76,13 @@ namespace StateEngine.Samples.Shared {
         private GameDataManager gameDataManager;
         protected RuntimeGameStateAsset runtimeState;
 
-        private void Reset() {
-            uiDocument = GetComponent<UIDocument>();
-        }
-
         private void Awake() {
-            if (uiDocument == null) {
-                uiDocument = GetComponent<UIDocument>();
-            }
-
             if (gameDataManager == null) {
                 gameDataManager = GameManager.Instance.Data;
             }
         }
 
-        private void OnEnable() {
+        protected virtual void OnEnable() {
             Initialize();
             SubscribeToRuntimeState();
             RefreshAllBindings();

@@ -9,7 +9,7 @@ namespace StateEngine.Graphs {
         protected class GameStateData : StateData {
             public bool isLevel;
 
-            public GameStateData() : base() {
+            public GameStateData(int id_none) : base(id_none) {
                 isLevel = false;
             }
         }
@@ -19,12 +19,12 @@ namespace StateEngine.Graphs {
         }
 
         protected override StateData CreateStateData() {
-            return new GameStateData();
+            return new GameStateData(stateIds.NONE);
         }
 
         protected override State[] CreateStateArray(int length) {
             GameState[] states = new GameState[length + 1]; //+NONE state
-            states[StateIds.NONE] = (GameState)CreateState(new GameStateData());
+            states[stateIds.NONE] = (GameState)CreateState(new GameStateData(stateIds.NONE));
             return states;
         }
 

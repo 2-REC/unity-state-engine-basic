@@ -90,6 +90,10 @@ namespace StateEngine.Managers.Game {
             gameSessionManager.SaveGame(filename);
         }
 
+        public bool LoadGame(string filename) {
+            return GameManager.Instance.Session.LoadGame(filename);
+        }
+
         public override void Leave() {
             // TODO: which?
             //if (runtimeState == null || runtimeState.CurrentLevel == -1) {

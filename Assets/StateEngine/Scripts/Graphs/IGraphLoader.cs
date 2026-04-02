@@ -5,8 +5,8 @@ using System;
 namespace StateEngine.Graphs {
     public abstract class IGraphLoader : object {
 
-        //private readonly string filename;
         private readonly TextAsset xmlGraph;
+        protected readonly StateIds stateIds;
 
         protected class StateData {
             public int id;
@@ -15,10 +15,10 @@ namespace StateEngine.Graphs {
             public bool restartable;
             public bool leavable;
 
-            public StateData() {
-                id = StateIds.NONE;
+            public StateData(int id_none) {
+                id = id_none;
                 scene = null;
-                next = StateIds.NONE;
+                next = id_none;
                 restartable = false;
                 leavable = false;
             }
@@ -41,9 +41,10 @@ namespace StateEngine.Graphs {
         */
         public IGraphLoader(TextAsset xmlGraph) {
             this.xmlGraph = xmlGraph;
+            this.stateIds = new StateIds();
         }
 
-        public State[] LoadStateGraph() {
+        public (StateIds, State[]) LoadStateGraph() {
             //TextAsset xmlFile = (TextAsset)Resources.Load(filename, typeof(TextAsset));
             XmlDocument xmlDoc = new XmlDocument();
             xmlDoc.LoadXml(xmlGraph.text);
@@ -55,10 +56,10 @@ namespace StateEngine.Graphs {
 
             XmlNodeList stateNodes = statesNodes[0].ChildNodes;
 
-            // First parse to get names of states
-            StateIds.Reset();
+            // first parse to get names of states
+            stateIds.Reset();
             foreach (XmlNode stateNode in stateNodes) {
-                StateIds.Add(stateNode.Attributes["id"].Value);
+                stateIds.Add(stateNode.Attributes["id"].Value);
             }
 
             State[] states = GetStates(stateNodes);
@@ -66,7 +67,7 @@ namespace StateEngine.Graphs {
             //TODO: check that all states have been allocated
             //...
 
-            return states;
+            return (stateIds, states);
         }
 
         protected State[] GetStates(XmlNodeList stateNodes) {
@@ -77,7 +78,7 @@ namespace StateEngine.Graphs {
                 StateData data = CreateStateData();
                 GetAttributes(data, stateNode.Attributes);
 
-                if (data.id == StateIds.NONE) {
+                if (data.id == stateIds.NONE) {
                     Debug.LogError("Invalid state: an ID is required! - ignoring");
                     return null;
                 }
@@ -96,12 +97,12 @@ namespace StateEngine.Graphs {
         }
 
         protected virtual StateData CreateStateData() {
-            return new StateData();
+            return new StateData(stateIds.NONE);
         }
 
         protected virtual State[] CreateStateArray(int length) {
             State[] states = new State[length + 1]; // + NONE state
-            states[StateIds.NONE] = CreateState(new StateData());
+            states[stateIds.NONE] = CreateState(new StateData(stateIds.NONE));
             return states;
         }
 
@@ -116,11 +117,11 @@ namespace StateEngine.Graphs {
             foreach (XmlAttribute attribute in attributes) {
                 // TODO: replace with 'switch'
                 if (attribute.Name.Equals("id")) {
-                    data.id = StateIds.Index(attribute.Value);
+                    data.id = stateIds.Index(attribute.Value);
                 } else if (attribute.Name.Equals("scene")) {
                     data.scene = attribute.Value;
                 } else if (attribute.Name.Equals("next")) {
-                    data.next = StateIds.Index(attribute.Value);
+                    data.next = stateIds.Index(attribute.Value);
                 } else if (attribute.Name.Equals("restartable")) {
                     data.restartable = ToBool(attribute.Value, data.restartable);
                 } else if (attribute.Name.Equals("leavable")) {
@@ -135,8 +136,8 @@ namespace StateEngine.Graphs {
                     foreach (XmlNode child in childList.ChildNodes) {
                         foreach (XmlAttribute attribute in child.Attributes) {
                             if (attribute.Name.Equals("id")) {
-                                int value = StateIds.Index(attribute.Value);
-                                if (value != StateIds.NONE) {
+                                int value = stateIds.Index(attribute.Value);
+                                if (value != stateIds.NONE) {
                                     state.AddChild(value);
                                 }
                                 break;

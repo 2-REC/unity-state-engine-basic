@@ -18,6 +18,8 @@ namespace StateEngine.Managers.Shared {
         public event OnStateChangeHandler OnStateChange;
         public int CurrentStateId { get; private set; }
 
+        // TODO: make private
+        public StateIds stateIds;
         private State[] states;
         private Stack<int> stack;
 
@@ -25,15 +27,8 @@ namespace StateEngine.Managers.Shared {
         private bool isAsync;
 
         protected IStateManager() {
-            Debug.Log("NEW STATE MANAGER: " + GetType());
             isAsync = false;
-
-            // TODO: make sure ok here (needed BEFORE loading new graph)
-            StateIds.Reset();
-
             stack = new Stack<int>();
-            stack.Push(StateIds.NONE);
-            CurrentStateId = StateIds.NONE;
         }
 
         protected virtual void Awake() {
@@ -48,36 +43,10 @@ namespace StateEngine.Managers.Shared {
             Load();
         }
 
-        /*
-        //void Load() {
-        public void Load() {
-            GraphLoader graphLoader = new GraphLoader(GRAPH_XML);
-            states = graphLoader.LoadStateGraph();
-        }
-        */
         public void Load(IGraphLoader graphLoader) {
-            states = graphLoader.LoadStateGraph();
+            (stateIds, states) = graphLoader.LoadStateGraph();
             Debug.Log("IStateManager::Load states: " + states);
         }
-
-        /*
-        public static IStateManager Instance {
-            get {
-                return instance;
-            }
-        }
-        public static bool IsInstance() {
-            Debug.Log("IsInstance: " + instance);
-            return (instance != null);
-        }
-
-        public static void SetInstance(IStateManager ins) {
-            if (IsInstance()) {
-                throw new Exception("INSTANCE ALREADY SET");
-            }
-            instance = ins;
-        }
-        */
 
         public State GetState(int stateId) {
             return states[stateId];
@@ -90,7 +59,7 @@ namespace StateEngine.Managers.Shared {
                     return state.Id;
                 }
             }
-            return StateIds.NONE;
+            return stateIds.NONE;
         }
 
         public void SetState(int stateId, bool push = true) {
@@ -111,7 +80,7 @@ namespace StateEngine.Managers.Shared {
                 State state = states[CurrentStateId];
                 if (state.Children == null && !state.Leavable) {
                     state = states[state.Next];
-                    if (StateIds.NONE != state.Id) {
+                    if (stateIds.NONE != state.Id) {
                         AsyncLoadScene();
                     }
                 }
@@ -125,7 +94,7 @@ namespace StateEngine.Managers.Shared {
 
             State state = states[CurrentStateId];
             int next = state.Next;
-            if (next != StateIds.NONE) {
+            if (next != stateIds.NONE) {
                 LoadState(next);
                 return;
             }
@@ -141,12 +110,12 @@ namespace StateEngine.Managers.Shared {
             State currentState = states[CurrentStateId];
 
             if (!currentState.Restartable) {
-                //                stack.Pop();
+//                stack.Pop();
 
                 int stateId = currentState.Next;
                 // TODO: correct test "CurrentStateId != StateIds.NONE"? (seems useless)
-                while ((CurrentStateId != StateIds.NONE) && (stateId == StateIds.NONE)) {
-                    //while ((CurrentStateId != StateIds.NONE) && (stateId == StateIds.NONE || !states[stateId].Restartable)) {
+                while ((CurrentStateId != stateIds.NONE) && (stateId == stateIds.NONE)) {
+                //while ((CurrentStateId != stateIds.NONE) && (stateId == stateIds.NONE || !states[stateId].Restartable)) {
                     if (stack.Count == 0) {
                         Debug.Log("Stack is empty => Leaving graph");
                         LeaveGraph();
@@ -182,7 +151,7 @@ namespace StateEngine.Managers.Shared {
             //if (CurrentStateId != stateId) {
             if (true) {
                 CurrentStateId = stateId;
-                //                stack.Push(stateId);
+//                stack.Push(stateId);
             }
 
             State state = states[CurrentStateId];

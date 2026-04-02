@@ -10,23 +10,18 @@ namespace StateEngine.Graphs {
         protected IStateManager stateManager;
 
         protected virtual void Awake() {
-Debug.Log("IStateController::Awake - INSTANCE");
             stateManager = GetStateManager();
-
             stateManager.OnStateChange += HandleOnStateChange;
 
             StateId = stateManager.GetStateId(SceneManager.GetActiveScene().name);
-
             InitState();
         }
 
         void Start() {
-            Debug.Log("GAME - Start - StateId: " + StateId);
             stateManager.SetState(StateId);
         }
 
         public void End() {
-            Debug.Log("GAME - End - StateId: " + StateId);
             stateManager.OnStateChange -= HandleOnStateChange;
             stateManager.NextState();
         }
@@ -61,10 +56,9 @@ Debug.Log("IStateController::Awake - INSTANCE");
 
         protected void LoadChildState(string childId) {
             State state = stateManager.GetState(StateId);
-            if ((state.Children != null) && state.Children.Contains(StateIds.Index(childId))) {
+            if ((state.Children != null) && state.Children.Contains(stateManager.stateIds.Index(childId))) {
                 // TODO: make sure it's ok
-                //stateManager.SetState(StateIds.Index(childId));
-                stateManager.SetState(StateIds.Index(childId), false);
+                stateManager.SetState(stateManager.stateIds.Index(childId), false);
             } else {
                 throw new Exception("IStateController: 'LoadChildState' can only be called with one of its children state!");
             }
@@ -79,7 +73,6 @@ Debug.Log("IStateController::Awake - INSTANCE");
 
             stateManager.LeaveGraph(exitScene);
         }
-
 
         protected abstract IStateManager GetStateManager();
 
