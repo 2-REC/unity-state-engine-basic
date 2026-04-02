@@ -132,6 +132,7 @@ GameObject:
   - component: {fileID: 613256926}
   - component: {fileID: 613256925}
   - component: {fileID: 613256924}
+  - component: {fileID: 613256929}
   m_Layer: 0
   m_Name: UICtrl
   m_TagString: Untagged
@@ -256,6 +257,34 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &613256929
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 613256923}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d5599e7f8c068bd4c9a6dfa6adaeb1b4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UI.LevelHudController
+  uiDocument: {fileID: 1741875200}
+  missingValueText: '-'
+  labelBindings:
+  - ElementName: level-label
+    Source: 0
+    FieldName: 
+    Prefix: 'Level: '
+    Suffix: 
+    OneBased: 0
+  - ElementName: lives-label
+    Source: 2
+    FieldName: 
+    Prefix: 'Lives:'
+    Suffix: 
+    OneBased: 0
+  progressBarBindings: []
 --- !u!1001 &1027113143
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -323,7 +352,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1741875201}
   - component: {fileID: 1741875200}
-  - component: {fileID: 1741875202}
   m_Layer: 5
   m_Name: UI
   m_TagString: Untagged
@@ -369,23 +397,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1741875202
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1741875199}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d5599e7f8c068bd4c9a6dfa6adaeb1b4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::UI.LevelHudController
-  uiDocument: {fileID: 1741875200}
-  levelLabelName: level-label
-  livesLabelName: lives-label
-  displayLevelAsOneBased: 0
-  missingValueText: '-'
 --- !u!1 &1803814755
 GameObject:
   m_ObjectHideFlags: 0

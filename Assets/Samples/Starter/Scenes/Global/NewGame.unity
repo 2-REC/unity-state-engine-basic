@@ -289,7 +289,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 26dba6e8c4f17cc429df75619b3cae26, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::StateEngine.Samples.Starter.NewgameStateController
-  gameSceneName: Level1
+  gameSceneName: Level
 --- !u!114 &582634799
 MonoBehaviour:
   m_ObjectHideFlags: 0

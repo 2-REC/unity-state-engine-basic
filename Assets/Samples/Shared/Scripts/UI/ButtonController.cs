@@ -2,7 +2,7 @@ using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UIElements;
 
-namespace StateEngine.Samples.Starter {
+namespace StateEngine.Samples.Shared {
     public class ButtonController : MonoBehaviour {
         [SerializeField] private UIDocument document;
         [SerializeField] private string buttonId;
