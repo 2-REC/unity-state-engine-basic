@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <graph>
 	<states>
-		<state id="LEVEL" isLevel="true" next="LEVEL">
+		<state id="LEVEL" isLevel="true" restartable="true" next="LEVEL" leavable="true">
 			<children>
 				<child id="GAME_END"/>
 				<child id="GAME_OVER"/>

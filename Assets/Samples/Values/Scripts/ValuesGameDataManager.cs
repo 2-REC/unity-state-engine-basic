@@ -1,16 +1,16 @@
 using StateEngine.Managers.Game;
 using System.Collections.Generic;
 
-namespace StateEngine.Samples {
-    public class SampleGameDataManager : GameDataManager {
+namespace StateEngine.Samples.Values {
+    public class ValuesGameDataManager : GameDataManager {
         public int Points {
-            get { return GetField("POINTS"); }
-            set { SetField("POINTS", value); }
+            get => GetField("POINTS");
+            set => SetField("POINTS", value);
         }
 
         public int Health {
-            get { return GetField("HEALTH"); }
-            set { SetField("HEALTH", value); }
+            get => GetField("HEALTH");
+            set => SetField("HEALTH", value);
         }
 
         protected override IEnumerable<string> GetLifeResetFields() {

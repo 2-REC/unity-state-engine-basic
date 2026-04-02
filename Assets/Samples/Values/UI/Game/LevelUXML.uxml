@@ -1,0 +1,33 @@
+<ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <ui:Label text="Level X" name="level-label" style="align-self: center;"/>
+    <ui:Label text="Values:" name="data-label" style="align-self: center;"/>
+    <ui:VisualElement name="data-container" style="flex-grow: 1; flex-direction: row; flex-basis: 0;">
+        <ui:VisualElement name="health-container" style="flex-grow: 1; flex-direction: column; flex-basis: 0;">
+            <ui:VisualElement name="health-label-container" style="flex-grow: 1; flex-direction: row; flex-basis: 0;">
+                <ui:Label text="Health" name="health-label" style="flex-basis: 0; flex-grow: 1;"/>
+                <ui:ProgressBar value="22" title="my-progress" name="health-progressbar"/>
+            </ui:VisualElement>
+            <ui:VisualElement name="health-button-container" style="flex-grow: 1; flex-direction: row; flex-basis: 0;">
+                <ui:Button text="-" name="health-sub-button" style="flex-basis: 0; flex-grow: 1; flex-direction: column;"/>
+                <ui:Button text="+" name="health-add-button" style="flex-basis: 0; flex-grow: 1;"/>
+            </ui:VisualElement>
+        </ui:VisualElement>
+        <ui:VisualElement name="points-container" style="flex-grow: 1; flex-direction: column; flex-basis: 0;">
+            <ui:VisualElement name="points-label-container" style="flex-grow: 1; flex-direction: row; flex-basis: 0;">
+                <ui:Label text="Points" name="points-label" style="flex-basis: 0; flex-grow: 1;"/>
+                <ui:Label text="-" name="points-value-label" style="-unity-text-align: upper-right; flex-basis: 0; flex-grow: 1;"/>
+            </ui:VisualElement>
+            <ui:VisualElement name="points-button-container" style="flex-grow: 1; flex-direction: row; flex-basis: 0;">
+                <ui:Button text="-" name="points-sub-button" style="flex-basis: 0; flex-grow: 1;"/>
+                <ui:Button text="+" name="points-add-button" style="flex-basis: 0; flex-grow: 1;"/>
+            </ui:VisualElement>
+        </ui:VisualElement>
+    </ui:VisualElement>
+    <ui:Label text="Lives: X" name="lives-label" style="align-self: center;"/>
+    <ui:Label text="Continues: X" name="continues-label" style="align-self: center;"/>
+    <ui:VisualElement name="button-container" style="flex-grow: 1; flex-direction: row; align-content: auto; align-items: flex-start; justify-content: space-evenly; -unity-text-align: upper-left;">
+        <ui:Button text="Win" name="win-button" style="flex-direction: column; flex-grow: 1; flex-basis: 0;"/>
+        <ui:Button text="Lose" name="lose-button" style="flex-basis: 0; flex-grow: 1;"/>
+    </ui:VisualElement>
+    <ui:Button text="Quit" name="quit-button"/>
+</ui:UXML>
